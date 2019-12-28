@@ -1,18 +1,19 @@
-#include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
 string solution(vector<string> participant, vector<string> completion) {
 	string answer = "";
-	for(vector<string>::iterator it=participant.begin();it!=participant.end();it++){
-		if(!find(completion.begin(),completion.end(),*it){
-			answer=*it;
-		}
-	}
+    sort(participant.begin(),participant.end());
+    sort(completion.begin(),completion.end());
+    vector<string>::iterator pit=participant.begin();
+    vector<string>::iterator cit=completion.begin();
+    while(*pit==*cit){
+        pit++;
+        cit++;
+    }
+    answer=*pit;
 	return answer;
-}
-int main(){
-	return 0;
 }
